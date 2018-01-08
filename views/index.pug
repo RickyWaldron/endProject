@@ -1,0 +1,70 @@
+html
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		title SustainabilityStarter
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			crossorigin="anonymous"
+			)
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='css/index.css')
+
+	body
+		include nav.pug
+
+		script.
+			//- $(document).ready(function(){
+				
+				
+		//- 		$("#firstSignup").submit(function(event) {
+		//- 			event.preventDefault()
+		//- 			$("#text").text('');
+		//- 			let email = $('#email').val()
+		//- 			let password = $('#password').val()
+		//- 			let passwordCheck = $('#passwordCheck').val()
+		//- 			if(password.length < 6) {
+		//- 				event.preventDefault()
+		//- 				$("#text").text("password is not long enough")
+		//- 				$("#password").val('');
+		//- 				$("#passwordCheck").val('')
+		//- 			}
+		//- 			else if(password !== passwordCheck){
+		//- 				event.preventDefault()
+		//- 				$("#text").text("passwords do not match");
+		//- 				$("#password").val('');
+		//- 				$("#passwordCheck").val('')
+		//- 			}
+		//- 			else { 
+		//- 					$.post("/signup", {email: email, password: password, ajax: true}, (result) => {
+		//- 					if(result.ajax == false) {
+		//- 					event.preventDefault()
+		//- 					$("#text").text(`${result.existingUser} is already taken`)
+		//- 					}
+		//- 					else {
+		//- 						window.location.assign("/signupInformation")
+		//- 						}
+		//- 					})
+		//- 				}
+		//- 			})
+		//- 		$(".loginClass").submit(function(event) {
+		//- 			event.preventDefault()
+		//- 			$("#text").text('');
+		//- 			let email = $('#email').val()
+		//- 			let password = $('#password').val()	
+		//- 			$.post("/login", {email: email, password: password, ajax: true, passval: true}, (result) => {
+		//- 				if(result.ajax == false) {
+		//- 				event.preventDefault()
+		//- 				$("#text").text('invalid login details')
+		//- 				}
+		//- 				else if(result.passval == false) {
+		//- 				event.preventDefault()
+		//- 				$("#text").text('invalid login details')	
+		//- 				}
+		//- 				else {
+		//- 					window.location.assign("/")
+		//- 				}	
+		//- 			})
+		//- 		})
+

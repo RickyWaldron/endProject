@@ -1,0 +1,71 @@
+.nav-tabs {
+    margin-bottom: 15px;
+    margin-left: 5px !important;
+}
+
+.listItemsA {
+    position: relative !important;
+    display: inline-block !important;
+    padding: 10px 15px !important;
+    color: #3c763d;
+}
+
+
+.modal-content{
+    width: 50%;
+    margin: 0 auto;
+    min-height: 40%;
+    color: #3c763d;
+}
+
+a.groupRight {
+    color: #3c763d;   
+}
+
+a.btn.btn-primary {
+    background-color: white;
+    color: green;
+    border: solid 1px #3c763d;
+    max-width: 125px;
+    border-radius: 0px;
+}
+
+a.dropdown-toggle {
+    color: #3c763d;
+}
+
+a.notDrop {
+    color: #3c763d;
+}
+
+a.navbar-brand {
+    color: #3c763d;
+}
+a.btn.btn-primary:hover {
+    color: white;
+    background-color: #3c763d;
+}
+input.btn.btn-primary.btn-sm {
+    background-color: #3c763d;
+}
+button.btn.btn-primary.btn-sm {
+    background-color: #3c763d;
+}
+
+button.btn.btn-default.btn-sm {
+    background-color: #3c763d;
+}
+
+.logoutButton{
+    background-color: white;
+    color: green;
+    border: solid 1px #3c763d;
+    max-width: 125px;
+    border-radius: 0px;
+}
+
+.logoutButton:hover {
+    color: white;
+    background-color: #3c763d;
+}
+

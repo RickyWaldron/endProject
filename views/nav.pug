@@ -1,0 +1,170 @@
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+	
+	body
+		
+		if(id)
+			nav.menu1
+				.container-fluid
+					.navbar-header
+						a.navbar-brand(href='/') Sustainability Launcher
+					ul.nav.navbar-nav
+						li.dropdown
+							a.dropdown-toggle(data-toggle='dropdown', href='#')
+								| Explore
+								span.caret
+							ul.dropdown-menu
+								li
+									a(href='#') Page 1-1
+								li
+									a(href='#') Page 1-2
+								li
+									a(href='#') Page 1-3
+						li
+							a.notDrop(href='#') Campaigns
+						li
+							a.notDrop(href='#') Search
+					ul.nav.navbar-nav.navbar-right
+							li
+								a.groupRight(href="/profile") Profile
+							li
+								a.groupRight(href="/createCampaign") Start your campaign
+							li
+								a.groupRight(href="/logout") Logout 
+		
+		if(!id)
+			nav.navbar.navbar
+				.container-fluid
+					.navbar-header
+						a.navbar-brand(href='/') Sustainability Launcher
+					ul.nav.navbar-nav
+						li.dropdown
+							a.dropdown-toggle(data-toggle='dropdown', href='#')
+								| Explore 
+								span.caret
+							ul.dropdown-menu
+								li
+									a(href='#') Page 1-1
+								li
+									a(href='#') Page 1-2
+								li
+									a(href='#') Page 1-3
+						li
+							a.notDrop(href='#') Campaigns
+						li
+							a.notDrop(href='#') Search
+					ul.nav.navbar-nav.navbar-right
+						li
+							a.btn.btn-primary(data-toggle='modal', data-target='#myModal')| Login/Signup
+						#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+							.modal-dialog.modal-lg
+								.modal-content
+									.modal-header
+									button.close(type='button', data-dismiss='modal', aria-hidden='true')| ×
+									h4#myModalLabel.modal-title Login / Signup
+									.modal-body
+										.row
+										.col-md-8(style='border-right: 1px dotted #C2C2C2;padding-right: 30px;')
+									// Nav tabs
+									ul.nav.nav-tabs
+										li.active
+										a(href='#Login', data-toggle='tab', class="listItemsA") Login
+										li
+										a(href='#Signup', data-toggle='tab', class="listItemsA") Signup
+									// Tab panes
+									.tab-content
+										#Login.tab-pane.active
+											form.form-horizontal(role='form' class="loginClass" action="/login")
+												.form-group
+													.col-sm-10
+														input#email1.form-control(type='email', placeholder='Email')
+												.form-group
+													.col-sm-10
+														input#exampleInputPassword1.form-control(type='password', placeholder='password')
+												.row
+													.col-sm-2
+													.col-sm-10
+														button.btn.btn-primary.btn-sm(type='submit')| Submit
+														h5(id="text" style="color: red") 	
+										#Signup.tab-pane
+											form.form-horizontal(role='form' id="firstSignup" action="/signup")
+												.form-group
+													.col-md-10
+														input#firstname.form-control(type='text', placeholder='Firstname')
+												.form-group
+													.col-md-10
+														input#lastname.form-control(type='text', placeholder='Lastname')
+												.form-group
+													.col-sm-10
+														input#email.form-control(type='email', placeholder='Email')
+												.form-group
+													.col-sm-10
+														input#password.form-control(type='password', placeholder='Password')
+												.form-group
+													.col-sm-10
+														input#passwordCheck.form-control(type='password', placeholder='Repeat password')
+												.row
+													.col-sm-2
+													.col-sm-10
+														input.btn.btn-primary.btn-sm(type='submit' value = "Save & Continue")| 
+														button.btn.btn-default.btn-sm(type='button', data-dismiss ='modal', aria-hidden='true')| Cancel
+														h5(id="text1" style="color: red")
+
+
+		script.
+			$(document).ready(function(){
+				$(".loginClass").submit(function(event) {
+					event.preventDefault()
+					$("#text").text('');
+					let email = $('#email1').val()
+					let password = $('#exampleInputPassword1').val()	
+					$.post("/login", {email: email, password: password, ajax: true, passval: true}, (result) => {
+						if(result.ajax == false) {
+						event.preventDefault()
+						$("#text").text('invalid login details')
+						}
+						else if(result.passval == false) {
+						event.preventDefault()
+						$("#text").text('invalid login details')	
+						}
+						else {
+							window.location.assign("/")
+						}	
+					})
+				})
+				$("#firstSignup").submit(function(event) {
+					event.preventDefault()
+					$("#text").text('');
+					let firstname = $('#firstname').val()
+					let lastname = $('#lastname').val()
+					let email = $('#email').val()
+					let password = $('#password').val()
+					let passwordCheck = $('#passwordCheck').val()
+					if(password.length < 6) {
+						event.preventDefault()
+						$("#text1").text("password is not long enough")
+						$("#password").val('');
+						$("#passwordCheck").val('')
+					}
+					else if(password !== passwordCheck){
+						event.preventDefault()
+						$("#text1").text("passwords do not match");
+						$("#password").val('');
+						$("#passwordCheck").val('')
+					}
+					else { 
+							$.post("/signup", {firstname: firstname, lastname: lastname, email: email, password: password, ajax: true}, (result) => {
+							if(result.ajax == false) {
+							event.preventDefault()
+							$("#text1").text(`${result.existingUser} is already taken`)
+							}
+							else {
+								console.log(id)
+								window.location.assign("/")
+								}
+							})
+						}
+					})
+			})	
