@@ -32,6 +32,8 @@ app.use(express.static('public'))
 require("./routes/signup.js")(app, client)
 require("./routes/login.js")(app, client)
 require("./routes/profile.js")(app, client)
+require("./routes/createCampaign.js")(app, client)
+require("./routes/allCampaigns.js")(app, client)
 
 app.get('/', (req, res) => {
     res.render("index", {id: req.session.user_id})      

@@ -1,0 +1,30 @@
+html
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		title SustainabilityStarter
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			crossorigin="anonymous"
+			)
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='css/index.css')
+		link(rel='stylesheet', type='text/css', href='css/allCampaigns.css')
+	body
+		include nav.pug
+		div.container
+			div.row
+				div.col-lg-8
+					div.row
+						div(class="col-lg-6 col-md-6")
+							- for (var i=0; i < allCampaigns.rows.length; i++)
+								div(class="oneCampaign")
+									a(href="/oneCampaign")
+									div(class="campaign")
+										img(class="campaignPicture", src="uploads/"+allCampaigns.rows[i].picture)
+									div(class="containerText")
+										div(class="campaign" id="title") #{allCampaigns.rows[i].title}
+										div(class="campaign" id="pitch") #{allCampaigns.rows[i].pitch}
+										div(class="campaign" id="goal") Goal: #{allCampaigns.rows[i].goal}

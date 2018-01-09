@@ -12,6 +12,7 @@
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
+	margin-right: 5px;
 }
 
 .navButton:hover {
@@ -26,34 +27,42 @@
 	border-bottom: solid 3px #3c763d;
 	color: #3c763d;
 	font-weight: bold;
+	outline: none;
+	box-shadow: 0px 10px 10px -6px #3c763d;
 }
 
 #profileButton.selected{
   	border-bottom: solid 3px #3c763d;
   	color: #3c763d;
 	font-weight: bold;
+	outline: none;
+	box-shadow: 0px 10px 10px -6px #3c763d;;
 }
 
 .profilePictureOutput {
-	max-width: 300px;
-	max-height: 400px;
+	max-width: 350px;
+	max-height: 3500px;
+}
+.settingsContainer {
+	margin-top: 20px;
 }
 
 #previewPic {
-	max-width: 300px;
-	max-height: 400px;
+	max-width: 350px;
+	max-height: 350px;
 }
 
 @media screen and (max-width: 480px) {
     .profilePictureOutput {
         max-width: 200px;
-		max-height: 300px;
+		max-height: 200px;
     }
 }
 
 @media screen and (max-width: 480px) {
     #previewPic {
         max-width: 200px;
-		max-height: 300px;
+		max-height: 200px;
+		border: solid 1px #3c763d;
     }
 }

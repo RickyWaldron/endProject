@@ -32,7 +32,8 @@ module.exports = (app, client) => {
 									console.log(result.rows[0].user_id)
 								req.session.user_id = result.rows[0].user_id
 								id = req.session.user_id
-								res.send({id})
+								firstname = result.rows[0].firstname
+								res.send({id, firstname})
 								})
 							})
 						})				

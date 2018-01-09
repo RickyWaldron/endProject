@@ -23,12 +23,13 @@ html
 								li
 									a(href='#') Page 1-3
 						li
-							a.notDrop(href='#') Campaigns
+							a.notDrop(href='/allCampaigns') Campaigns
 						li
 							a.notDrop(href='#') Search
 					ul.nav.navbar-nav.navbar-right
 							li
-								a.groupRight(href="/profile") Profile
+								a.groupRight(href="/profile") #{firstname}
+									img(src="uploads/"+picture, onerror="this.onerror=null;this.src='images/avatar.png'", style=" margin-top: -10px; max-height: 32px; max-width: 32px; border-radius: 50%; vertical-align: middle;") 
 							li
 								a.groupRight(href="/createCampaign") Start your campaign
 							li
@@ -52,7 +53,7 @@ html
 								li
 									a(href='#') Page 1-3
 						li
-							a.notDrop(href='#') Campaigns
+							a.notDrop(href='/allCampaigns') Campaigns
 						li
 							a.notDrop(href='#') Search
 					ul.nav.navbar-nav.navbar-right

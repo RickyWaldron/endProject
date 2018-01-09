@@ -22,10 +22,12 @@ module.exports = (app, client) => {
             client.query(query, (error, result) => {
             	if (error) throw error
             	if (result.rows.length == 1){
+                    firstname = result.rows[0].firstname
+                    picture = result.rows[0].picture
             		req.session.user_id = result.rows[0].user_id
                     let id = req.session.user_id
                     console.log("login id " + id)
-            		res.send({ajax, id, passval})
+            		res.send({ajax, id, passval, picture, firstname})
                 	   }              	
                		})
             	}
