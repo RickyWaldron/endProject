@@ -53,4 +53,13 @@ html
 							p(class="title") Email address?
 							input(class="textField", id="email", type="text", name="email", placeholder="email")
 						div(class="divbutton")
-							input(id="button" class="submitButton", type="submit", value="Next step")
+							input(id="button" class="submitButton", type="submit", value="Create Campaign!")
+
+		script.
+			$(document).ready(function(){
+				$("#createCampaignForm").submit(function(e){
+				var watch = $("#video").val()
+				var embed = watch.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/")
+				$('#video').val(embed)
+				})		
+			})						

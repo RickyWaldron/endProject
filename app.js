@@ -34,6 +34,7 @@ require("./routes/login.js")(app, client)
 require("./routes/profile.js")(app, client)
 require("./routes/createCampaign.js")(app, client)
 require("./routes/allCampaigns.js")(app, client)
+require("./routes/donate.js")(app, client)
 
 app.get('/', (req, res) => {
     res.render("index", {id: req.session.user_id})      

@@ -7,65 +7,69 @@
     position: relative !important;
     display: inline-block !important;
     padding: 10px 15px !important;
-    color: #3c763d;
+    color: #35CA97;
 }
 
 .modal-content{
     width: 50%;
     margin: 0 auto;
     min-height: 40%;
-    color: #3c763d;
+    color: #35CA97;
 }
 
 a.groupRight {
-    color: #3c763d;   
+    color: #35CA97;
+    height: 50px;   
 }
 
 a.btn.btn-primary {
     background-color: white;
-    color: green;
-    border: solid 1px #3c763d;
+    color: #35CA97;
     max-width: 125px;
     border-radius: 0px;
+    border: none;
 }
 
 a.dropdown-toggle {
-    color: #3c763d;
+    color: #35CA97;
+}
+nav.menu1 {
+    border-bottom: solid 0.05em #35CA97;
 }
 
+nav.navbar.navbar{
+    border-bottom: solid 0.05em #35CA97;
+}
 a.notDrop {
-    color: #3c763d;
+    color: #35CA97;
 }
 
 a.navbar-brand {
-    color: #3c763d;
+    color: #35CA97;
 }
-a.btn.btn-primary:hover {
-    color: white;
-    background-color: #3c763d;
-}
+
 input.btn.btn-primary.btn-sm {
-    background-color: #3c763d;
+    background-color: #35CA97;
 }
 button.btn.btn-primary.btn-sm {
-    background-color: #3c763d;
+    background-color: #35CA97;
 }
 
 button.btn.btn-default.btn-sm {
-    background-color: #3c763d;
+    background-color: #35CA97;
 }
 
 .logoutButton{
     background-color: white;
     color: green;
-    border: solid 1px #3c763d;
+    border: solid 1px #35CA97;
     max-width: 125px;
     border-radius: 0px;
 }
 
 .logoutButton:hover {
     color: white;
-    background-color: #3c763d;
+    background-color: #35CA97;
 }
 
 

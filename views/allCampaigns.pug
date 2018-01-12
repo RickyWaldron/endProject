@@ -15,16 +15,12 @@ html
 	body
 		include nav.pug
 		div.container
-			div.row
-				div.col-lg-8
-					div.row
-						div(class="col-lg-6 col-md-6")
-							- for (var i=0; i < allCampaigns.rows.length; i++)
-								div(class="oneCampaign")
-									a(href="/oneCampaign")
-									div(class="campaign")
-										img(class="campaignPicture", src="uploads/"+allCampaigns.rows[i].picture)
-									div(class="containerText")
-										div(class="campaign" id="title") #{allCampaigns.rows[i].title}
-										div(class="campaign" id="pitch") #{allCampaigns.rows[i].pitch}
-										div(class="campaign" id="goal") Goal: #{allCampaigns.rows[i].goal}
+			- for (var i=0; i < allCampaigns.rows.length; i++)
+				div(class="containerCampaign")
+					a(href=`/oneCampaign?id=${allCampaigns.rows[i].campaign_id}` id ="idSelectCampaignButton" class="selectCampaignButton" value=`${allCampaigns.rows[i].campaign_id}`)
+						div(class="campaign")
+							img(class="campaignPicture", src="uploads/"+allCampaigns.rows[i].picture)
+						div(class="containerText")
+							div(class="campaign" id="title") #{allCampaigns.rows[i].title}
+							div(class="campaign" id="pitch") #{allCampaigns.rows[i].pitch}
+							div(class="campaign" id="goal") Goal: #{allCampaigns.rows[i].goal}

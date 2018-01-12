@@ -1,0 +1,155 @@
+html
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		title SustainabilityStarter
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			crossorigin="anonymous"
+			)
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='css/index.css')
+		link(rel='stylesheet', type='text/css', href='css/oneCampaign.css')
+
+	body
+		include nav.pug
+		div.container
+			- for (var i=0; i < selectedCampaign.length; i++)
+				div(class="oneCampaign")
+					div(class="campaignProfilePictureDiv")
+						img(class="campaignProfilePicture", src="uploads/"+selectedCampaign[i].picture)
+					div(class="containerText")
+						div(class="campaign" id="title") #{selectedCampaign[i].title}
+					div(class="containerText")
+						div(class="campaign" id="") #{selectedCampaign[i].pitch}
+					div(class="containerText")
+						div(class="campaign" id="title") #{selectedCampaign[i].body}
+					div(class="containerText")
+						iframe(class="youtubeVideo" src=selectedCampaign[i].video+"?modestbranding=1&autohide=1&showinfo=0&controls=0" frameborder="0" allowfullscreen)
+					div(class="containerText")
+						div(class="campaign" id="title") #{selectedCampaign[i].amountraised}
+					div(class="containerText")
+						div(class="campaign" id="title") #{selectedCampaign[i].url}
+					div(class="containerText")
+						div(class="campaign" id="title") #{selectedCampaign[i].goal}
+					div(id="containerProgressbar")
+						div(id="progressbar1")
+					h5(id="progressText")
+				if(!id)
+					h2 Login to donate!
+				if(id)		
+					button.btn.btn-info.btn-lg(type='button', data-toggle='modal', id="donateNow" data-target='#donateButton') Donate now
+					h3(id="text")
+					#donateButton.modal.fade(role='dialog')
+						.modal-dialog
+							.modal-content
+								.modal-header
+									button.close(type='button', data-dismiss='modal') ×
+									h4.modal- 
+								.modal-body
+									form(action="/donate" id="donateForm")
+										label Donate 10$
+											input(type="checkbox" name="checkboxName" value="10" id="checkbox1" class="checkboxForm")
+										label Donate 25$
+											input(type="checkbox" name="checkboxName" value="25" id="checkbox2" class="checkboxForm")
+										label Donate 50$
+											input(type="checkbox" name="checkboxName" value="50" id="checkbox3" class="checkboxForm") 
+										label Donate 100$
+											input(type="checkbox" name="checkboxName" value="100" id="checkbox4" class="checkboxForm")
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal' id="submitDonation") Donate
+				div(class="mappy" id="googleMap")
+
+		script.
+			$(document).ready(function(){
+				var campaign = !{JSON.stringify(selectedCampaign).replace(/<\//g, '<\\/')}
+				let campaignId = campaign[0].campaign_id
+				let goal = campaign[0].goal
+				let amountraised = campaign[0].amountraised
+				if(amountraised == null){
+					amountraised = 0
+				}
+				let percentage = 0
+				function percentageOfGoal(a,b){
+					return ((a/b) * 100).toFixed(2) + '%'
+				}
+				percentageOfGoal(amountraised, goal)
+				$("#progressText").text(`${percentageOfGoal(amountraised, goal)} raised of goal`)
+				$("#progressbar1").css("width", percentageOfGoal(amountraised, goal))
+				$("#text").text("")
+				$("#submitDonation").click(function(e){
+					e.preventDefault()
+					let contribution = ""
+					$('input[name="checkboxName"]:checked').each(function() {
+						let contribution = this.value
+						$("#donateForm").submit()
+							$.post("/donate", {campaignId: campaignId, contribution: contribution}, (result) => {
+									$("#text").text("")
+							console.log("You donated" + contribution)
+								jQuery('input:checked').prop('checked', false);
+							$("#text").text(`You donated ${result.contributionSuccess} $`)
+						})
+					})
+					})
+					
+				jQuery(function($) {
+					// Asynchronously Load the map API 
+					var script = document.createElement('script');
+					script.src = "//maps.googleapis.com/maps/api/js?key=#{process.env.apikey}&callback=initialize";
+					document.body.appendChild(script);
+					});
+					
+					window.initialize = function() {
+					var map;
+					var bounds = new google.maps.LatLngBounds();
+					var mapOptions = {
+						mapTypeId: 'roadmap'
+					};
+									
+					// Display a map on the page
+					map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+					map.setTilt(45);
+
+					
+					var data = !{JSON.stringify(selectedCampaign).replace(/<\//g, '<\\/')}
+					var infoWindowContent = []
+					var markers = []
+					for (var j = 0; j < data.length; j++) {
+					markers.push([data[0].title, data[0].latitude, data[0].longitude])
+						infoWindowContent.push([data[0].title])
+					}
+						
+					// Display multiple markers on a map
+					var infoWindow = new google.maps.InfoWindow(), marker, i;
+					
+					// Loop through our array of markers & place each one on the map  
+					for( i = 0; i < markers.length; i++ ) {
+						var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+						bounds.extend(position);
+						marker = new google.maps.Marker({
+							position: position,
+							map: map,
+							title: markers[i][0]
+						});
+						
+						// Allow each marker to have an info window    
+						google.maps.event.addListener(marker, 'click', (function(marker, i) {
+							return function() {
+								infoWindow.setContent(infoWindowContent[i][0]);
+								infoWindow.open(map, marker);
+							}
+						})(marker, i));
+
+						// Automatically center the map fitting all markers on the screen
+						map.fitBounds(bounds);
+					}
+
+					// Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+					var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+						this.setZoom(8);
+						google.maps.event.removeListener(boundsListener);
+						})
+					}
+				})

@@ -24,19 +24,19 @@
 }
 
 #settingsButton.selected{
-	border-bottom: solid 3px #3c763d;
-	color: #3c763d;
+	border-bottom: solid 3px #35CA97;
+	color: #35CA97;
 	font-weight: bold;
 	outline: none;
-	box-shadow: 0px 10px 10px -6px #3c763d;
+	box-shadow: 0px 10px 10px -6px #35CA97;
 }
 
 #profileButton.selected{
-  	border-bottom: solid 3px #3c763d;
-  	color: #3c763d;
+  	border-bottom: solid 3px #35CA97;
+  	color: #35CA97;
 	font-weight: bold;
 	outline: none;
-	box-shadow: 0px 10px 10px -6px #3c763d;;
+	box-shadow: 0px 10px 10px -6px #35CA97;;
 }
 
 .profilePictureOutput {
@@ -63,6 +63,6 @@
     #previewPic {
         max-width: 200px;
 		max-height: 200px;
-		border: solid 1px #3c763d;
+		border: solid 1px #35CA97;
     }
 }
