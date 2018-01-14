@@ -7,6 +7,7 @@ html
 			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 			crossorigin="anonymous"
 			)
+		script(src='https://www.paypalobjects.com/api/checkout.js')
 		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
@@ -50,22 +51,30 @@ html
 									h4.modal- 
 								.modal-body
 									form(action="/donate" id="donateForm")
-										label Donate 10$
+										label(class="labelCheckbox") Donate 10$
 											input(type="checkbox" name="checkboxName" value="10" id="checkbox1" class="checkboxForm")
-										label Donate 25$
+											span(class="styleCheckbox")
+										label(class="labelCheckbox") Donate 25$
 											input(type="checkbox" name="checkboxName" value="25" id="checkbox2" class="checkboxForm")
-										label Donate 50$
-											input(type="checkbox" name="checkboxName" value="50" id="checkbox3" class="checkboxForm") 
-										label Donate 100$
+											span(class="styleCheckbox")
+										label(class="labelCheckbox") Donate 50$
+											input(type="checkbox" name="checkboxName" value="50" id="checkbox3" class="checkboxForm")
+											span(class="styleCheckbox") 
+										label(class="labelCheckbox") Donate 100$
 											input(type="checkbox" name="checkboxName" value="100" id="checkbox4" class="checkboxForm")
+											span(class="styleCheckbox")
 										.modal-footer
 											button.btn.btn-default(type='button', data-dismiss='modal' id="submitDonation") Donate
 				div(class="mappy" id="googleMap")
 
 		script.
 			$(document).ready(function(){
+				$('input.checkboxForm').on('change', function() {
+				$('input.checkboxForm').not(this).prop('checked', false);
+				});
 				var campaign = !{JSON.stringify(selectedCampaign).replace(/<\//g, '<\\/')}
 				let campaignId = campaign[0].campaign_id
+				let campaignName = campaign[0].title
 				let goal = campaign[0].goal
 				let amountraised = campaign[0].amountraised
 				if(amountraised == null){
@@ -85,14 +94,41 @@ html
 					$('input[name="checkboxName"]:checked').each(function() {
 						let contribution = this.value
 						$("#donateForm").submit()
-							$.post("/donate", {campaignId: campaignId, contribution: contribution}, (result) => {
+						paypal.Button.render({
+									env: 'sandbox', // Or 'sandbox'
+									client: {
+									sandbox: 'ARJ5GQ-vRn8IJ41aJ55V1SVBYufYfmWyKFj0kcVA2EFv9icPs4DWAYKF-tPqwDNvong6ux_9lMYZN1ym',
+									production: 'xxxxxxxxx'
+									},
+									commit: true, // Show a 'Pay Now' button
+									payment: function(data, actions) {
+									return actions.payment.create({
+									payment: {
+									transactions: [
+									{
+									amount: { total: contribution, currency: 'USD' }
+											}]
+										}
+									});
+									},
+									onAuthorize: function(data, actions) {
+									return actions.payment.execute().then(function(payment) {
+									});
+									}
+									}, '#submitDonation');
+							$.post("/donate", {campaignName: campaignName, campaignId: campaignId, contribution: contribution}, (result) => {
 									$("#text").text("")
-							console.log("You donated" + contribution)
-								jQuery('input:checked').prop('checked', false);
-							$("#text").text(`You donated ${result.contributionSuccess} $`)
-						})
-					})
-					})
+									console.log("You donated" + contribution)
+									jQuery('input:checked').prop('checked', false);
+									$("#text").text(`You donated ${result.contributionSuccess} $`)
+									amountraised = parseFloat(`${result.contributionSuccess}`) + parseFloat(amountraised)
+									$("#progressText").text(`${percentageOfGoal(amountraised, goal)} raised of goal`)
+									$("#progressbar1").css("width", percentageOfGoal(amountraised, goal))
+										})
+									})
+								})
+					
+
 					
 				jQuery(function($) {
 					// Asynchronously Load the map API 
