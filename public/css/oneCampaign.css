@@ -1,12 +1,135 @@
 #googleMap{
 	border: solid 1px black;
-	width: 40%;
-	height: 50%;
+	width: 80%;
+	height: 60%;
+	margin-top: 10px;
+
 }
 
-.youtubeVideo{
+.locationDiv{
+	width: 45%;
+	display: inline-block;
+}
+
+.overview{
+	width: 40%;
+	display: inline-block;
+	position: absolute;
+	color: #a8a8a8;
+}
+
+.overviewRight{
+	display: inline-block;
+	width: 55%;
+	margin-top: 15px;
+}
+.overviewLeft{
+	display: inline-block;
+	width: 45%;
+	padding-left: 10px;
+}
+
+.headOverview{
+	font-size: 24px;
+	border-bottom: solid 1px #a8a8a8;
+	font-weight: lighter;
+}
+
+.headLocation{
+	width: 90%;
+	border-bottom: solid 1px #a8a8a8;
+	color:#a8a8a8;
+	font-size: 24px;
+	font-weight: lighter;
+}
+
+.containerInformation{
+	margin-top: 20px;
+	margin-bottom: 150px; 
+}
+.completeStory{
+	width: 65%;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.containerMapOverview{
+	margin-top: 20px;
+}
+.moreInformation{
+	position: absolute;
+	width: 30%;
+	display: inline-block;
+}
+.headStory{
+	width: 90%;
+	border-bottom: solid 1px #a8a8a8;
+	color:#a8a8a8;
+	font-size: 24px;
+	font-weight: lighter;
+}
+
+.urlStory{
+	width: 90%;
+	border-bottom: solid 1px #a8a8a8;
+	color:#a8a8a8;
+	font-size: 24px;
+	font-weight: lighter;
+}
+
+
+#pitchOverview {
+	font-size: 16px;
+	color: black;
+	font-weight: normal;
+}
+
+.oneCampaign{
+	width: 100%;
+	margin-top: 50px;
+}
+
+#goal{
+	font-size: 20px;
+}
+
+#amountraised{
+	font-size: 16px;
+}
+
+#donateNow{
+	margin-top: 20px;
 	width: 50%;
-	height: 50%;
+	background-color: #35CA97;
+}
+.oneCampaignLeft {
+	width: 65%;
+	display: inline-block;
+}
+.containerText{
+	padding-top: 15px;
+}
+
+#nowFunding{
+	border-bottom: solid 1px #a8a8a8;
+	color: #a8a8a8;
+	font-weight: lighter;
+	font-size: 18px;
+}
+
+.oneCampaignRight {
+	margin-top: 25px;
+	margin-left: 20px;
+	width: 30%;
+	display: inline-block;
+	padding-left: 10px;
+	position: absolute;
+}	
+
+.youtubeVideo{
+	margin-top: 10px;
+	width: 100%;
+	height: 80%;
 }
 
 @media screen and (max-width: 480px) {
@@ -60,8 +183,9 @@
 }
 
 #containerProgressbar{
-	width: 40%;
-	height: 5%;
+	margin-top: 20px;
+	width: 80%;
+	height: 40px;
 	background-color: #b1e6d4; 
 }
 

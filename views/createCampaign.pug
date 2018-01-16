@@ -11,47 +11,45 @@ html
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
 		link(rel='stylesheet', type='text/css', href='css/index.css')
-
+		link(rel='stylesheet', type='text/css', href='css/createCampaign.css')
 	body
 		include nav.pug
 		div(class="container")
 			div(class="filling")
-			div(class="containerSignup")
+			div(class="containerCreateCampaign")
 				div(class="frontText")
 					h1 Launch your Campaign
 				div(class="formDIV")
 					FORM(id="createCampaignForm", class="campaignFormClass", action="/createCampaignForm", method="post", enctype="multipart/form-data")
 						div(class="formElement")
 							p(class="title") The title of your campaign:
-							input(class="textField", id="title", type="text", name="title", placeholder="title" required)
+							input(class="textField", id="titleCampaign", type="text", name="title", placeholder="Title" required)
 						div(class="formElement")
-							p(class="title") A short pitch, this will be shown in the campaigns section:
+							p(class="title") A short pitch where you show attract potential donors, this will be shown in the campaigns section:
 							input(class="textField", id="pitch", type="text", name="pitch", placeholder="Pitch (Max 80 Characters)" maxlength="80" required)
 						div(class="formElement")
-							p(class="title") The description of your campaign:
-							input(class="textField", id="body", type="text", name="body", placeholder="body" required)
+							p(class="title") The description of your campaign, this should section should explain your whole story:
+							input(class="textField", id="body", type="text", name="body", placeholder="Body" required)
 						div(class="formElement")
 							p(class="title") What is the amount of money you would like to raise?
-							input(class="textField", id="goal", type="text", name="goal", placeholder="Goal" required)
+							input(class="textField", id="goal", type="text", name="goal", placeholder="Goal (Just fill in numbers)" required)
 						div(class="formElement")
 							p(class="title") Enter the link to your website:
 							input(class="textField", id="urladdress", type="url", name="url", placeholder="Your website")
 						div(class="formElement")
 							p(class="title") Enter the Youtube url for a short video of your project:
-							input(class="textField", id="video", type="url", name="video", placeholder="URL Video")
-						div(class="formElement")
-							p(class="title") Upload a picture that represents your campaign
-							input(class="textField", id="campaignPicture", type="file", name="campaignPicture", alt="Your campaign picture")
+							input(class="textField", id="video", type="url", name="video", placeholder="URL Youtube Video")
 						div(class="formElement")
 							p(class="title") Where are your headquarters located?:
 							input(class="textField", id="streetAddress", type="text", name="streetAddress", placeholder="Street Address" required style="margin-right: 10px;")
 							input(class="textField", id="homeNumber", type="text", name="homeNumber", placeholder="Number" required)
+							input(class="textField", id="city", type="text", name="city", placeholder="City" required)
 						div(class="formElement")
-							p(class="title") From what city do you operate?
-							input(class="textField", id="city", type="text", name="city", placeholder="city" required)
+							p(class="title") At what email address can you be contacted?
+							input(class="textField", id="email", type="text", name="email", placeholder="Email")
 						div(class="formElement")
-							p(class="title") Email address?
-							input(class="textField", id="email", type="text", name="email", placeholder="email")
+							p(class="title") Upload a picture that represents your campaign
+							input(class="textField", id="campaignPicture", type="file", name="campaignPicture", alt="Your campaign picture")
 						div(class="divbutton")
 							input(id="button" class="submitButton", type="submit", value="Create Campaign!")
 

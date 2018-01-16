@@ -10,61 +10,88 @@ html
 		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
 		link(rel='stylesheet', type='text/css', href='css/index.css')
-
+		link(rel='stylesheet', type='text/css', href='css/slider.css')
+		link(rel='stylesheet', type='text/css', href='css/allCampaigns.css')
 	body
 		include nav.pug
+			div.wrap
+				div.video-background
+					div.video-foreground
+						iframe(id="video1" src=selectedCampaigns[0].video+"?t=0&controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[0].title}
+							p #{selectedCampaigns[0].pitch}
+					div.video-foreground
+						iframe(id="video2" src=selectedCampaigns[4].video+"?t=0&controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[4].title}
+							p #{selectedCampaigns[4].pitch}
+					div.video-foreground
+						iframe(id="video3" src=selectedCampaigns[1].video+"?t=0&controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[1].title}
+							p #{selectedCampaigns[1].pitch}
+				div#arrow-right.arrow
+			div.container
+				p.headText Popular Campaigns
+				- for (var j=0; j < orderedCampaigns.length; j++)
+					div(class="containerCampaign")
+						a(href=`/oneCampaign?id=${orderedCampaigns[j].campaign_id}` id ="idSelectCampaignButton" class="selectCampaignButton" value=`${orderedCampaigns[j].campaign_id}`)
+							div(class="campaign")
+								img(class="campaignPicture", src="uploads/"+orderedCampaigns[j].picture)
+							div(class="containerText")
+								div(class="campaign" id="title") #{orderedCampaigns[j].title}
+								div(class="campaign" id="pitch") #{orderedCampaigns[j].pitch}
+								div(class="campaign" id="goal") Goal: #{orderedCampaigns[j].goal}
+
+
 
 		script.
-			//- $(document).ready(function(){
-				
-				
-		//- 		$("#firstSignup").submit(function(event) {
-		//- 			event.preventDefault()
-		//- 			$("#text").text('');
-		//- 			let email = $('#email').val()
-		//- 			let password = $('#password').val()
-		//- 			let passwordCheck = $('#passwordCheck').val()
-		//- 			if(password.length < 6) {
-		//- 				event.preventDefault()
-		//- 				$("#text").text("password is not long enough")
-		//- 				$("#password").val('');
-		//- 				$("#passwordCheck").val('')
-		//- 			}
-		//- 			else if(password !== passwordCheck){
-		//- 				event.preventDefault()
-		//- 				$("#text").text("passwords do not match");
-		//- 				$("#password").val('');
-		//- 				$("#passwordCheck").val('')
-		//- 			}
-		//- 			else { 
-		//- 					$.post("/signup", {email: email, password: password, ajax: true}, (result) => {
-		//- 					if(result.ajax == false) {
-		//- 					event.preventDefault()
-		//- 					$("#text").text(`${result.existingUser} is already taken`)
-		//- 					}
-		//- 					else {
-		//- 						window.location.assign("/signupInformation")
-		//- 						}
-		//- 					})
-		//- 				}
-		//- 			})
-		//- 		$(".loginClass").submit(function(event) {
-		//- 			event.preventDefault()
-		//- 			$("#text").text('');
-		//- 			let email = $('#email').val()
-		//- 			let password = $('#password').val()	
-		//- 			$.post("/login", {email: email, password: password, ajax: true, passval: true}, (result) => {
-		//- 				if(result.ajax == false) {
-		//- 				event.preventDefault()
-		//- 				$("#text").text('invalid login details')
-		//- 				}
-		//- 				else if(result.passval == false) {
-		//- 				event.preventDefault()
-		//- 				$("#text").text('invalid login details')	
-		//- 				}
-		//- 				else {
-		//- 					window.location.assign("/")
-		//- 				}	
-		//- 			})
-		//- 		})
+			$(document).ready(function(){
+				let sliderImages = document.querySelectorAll(".video-foreground"),
+					videoInfo = document.querySelectorAll("#vidtop-content"),
+					
+					arrowRight = document.querySelector("#arrow-right"),
+					current = 0;
 
+
+					// Clear all images
+					function reset() {
+						for (let i = 0; i < sliderImages.length; i++) {
+						sliderImages[i].style.display = "none";
+						videoInfo[i].style.display = "none";
+						}
+					}
+
+					// Init slider
+					function startSlide() {
+						reset();
+						sliderImages[0].style.display = "block";
+						videoInfo[0].style.display = "block";
+					}
+
+					
+
+					// Show next
+					function slideRight() {
+						reset();
+						sliderImages[current + 1].style.display = "block";
+						videoInfo[current + 1].style.display = "block";
+						current++;
+					}
+
+
+					// Right arrow click
+					arrowRight.addEventListener("click", function() {
+						if (current === sliderImages.length - 1) {
+							current = -1;
+						}
+						
+						slideRight();
+					});
+
+					startSlide();
+				})

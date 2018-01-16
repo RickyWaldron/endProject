@@ -1,0 +1,32 @@
+html
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		title SustainabilityStarter
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			crossorigin="anonymous"
+			)
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='css/index.css')
+
+	body
+		include nav.pug
+		FORM(id="searchCampaignForm", class="searchCampaign", action="/searchCampaigns")
+			input(type="text" id="searchedCampaignId" class="searchInputCampaign" name="searchCampaign")
+			input(class="submitSearch", type="submit", name="search")
+		div.containerFoundCampaing
+			
+
+		script.
+			$(document).ready(function() {
+				$(".submitSearch").click(function(e) {
+				e.preventDefault()
+				let searchedCampaign = $('#searchedCampaignId').val()
+					console.log(searchedCampaign)
+					$.post("/searchCampaigns", {searchedCampaign: searchedCampaign},  (result) => {
+						console.log(`${result.title}`)
+					})
+				})
+			})

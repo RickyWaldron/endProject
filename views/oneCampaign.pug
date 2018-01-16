@@ -19,53 +19,85 @@ html
 		div.container
 			- for (var i=0; i < selectedCampaign.length; i++)
 				div(class="oneCampaign")
-					div(class="campaignProfilePictureDiv")
-						img(class="campaignProfilePicture", src="uploads/"+selectedCampaign[i].picture)
-					div(class="containerText")
-						div(class="campaign" id="title") #{selectedCampaign[i].title}
-					div(class="containerText")
-						div(class="campaign" id="") #{selectedCampaign[i].pitch}
-					div(class="containerText")
-						div(class="campaign" id="title") #{selectedCampaign[i].body}
-					div(class="containerText")
-						iframe(class="youtubeVideo" src=selectedCampaign[i].video+"?modestbranding=1&autohide=1&showinfo=0&controls=0" frameborder="0" allowfullscreen)
-					div(class="containerText")
-						div(class="campaign" id="title") #{selectedCampaign[i].amountraised}
-					div(class="containerText")
-						div(class="campaign" id="title") #{selectedCampaign[i].url}
-					div(class="containerText")
-						div(class="campaign" id="title") #{selectedCampaign[i].goal}
-					div(id="containerProgressbar")
-						div(id="progressbar1")
-					h5(id="progressText")
-				if(!id)
-					h2 Login to donate!
-				if(id)		
-					button.btn.btn-info.btn-lg(type='button', data-toggle='modal', id="donateNow" data-target='#donateButton') Donate now
-					h3(id="text")
-					#donateButton.modal.fade(role='dialog')
-						.modal-dialog
-							.modal-content
-								.modal-header
-									button.close(type='button', data-dismiss='modal') ×
-									h4.modal- 
-								.modal-body
-									form(action="/donate" id="donateForm")
-										label(class="labelCheckbox") Donate 10$
-											input(type="checkbox" name="checkboxName" value="10" id="checkbox1" class="checkboxForm")
-											span(class="styleCheckbox")
-										label(class="labelCheckbox") Donate 25$
-											input(type="checkbox" name="checkboxName" value="25" id="checkbox2" class="checkboxForm")
-											span(class="styleCheckbox")
-										label(class="labelCheckbox") Donate 50$
-											input(type="checkbox" name="checkboxName" value="50" id="checkbox3" class="checkboxForm")
-											span(class="styleCheckbox") 
-										label(class="labelCheckbox") Donate 100$
-											input(type="checkbox" name="checkboxName" value="100" id="checkbox4" class="checkboxForm")
-											span(class="styleCheckbox")
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal' id="submitDonation") Donate
-				div(class="mappy" id="googleMap")
+					div(class="oneCampaignLeft")
+						div(class="containerText")
+							iframe(class="youtubeVideo" src=selectedCampaign[i].video+"?modestbranding=1&autohide=1&showinfo=0&controls=0" frameborder="0" allowfullscreen)
+					div(class="oneCampaignRight")
+						div(class="containerText" id="nowFunding")
+							p Now Funding
+						div(class="containerText")
+							h2(class="campaign" id="title") #{selectedCampaign[i].title}
+						div(class="containerText")
+							div(class="campaign" id="pitch") #{selectedCampaign[i].pitch}	
+						div(class="containerText")
+							div(class="campaign" id="goal") Goal of this project: $#{selectedCampaign[i].goal} USD.
+						div(class="containerText")
+							div(class="campaign" id="amountraised") This project has raised $#{selectedCampaign[i].amountraised} USD in total.
+						div(id="containerProgressbar")
+							div(id="progressbar1")
+						h5(id="progressText")
+						if(!id)
+							h2 Login to donate!
+						if(id)
+							button.btn.btn-info.btn-lg(type='button', data-toggle='modal', id="donateNow" data-target='#donateButton') Donate now
+							h4(id="text")
+							#donateButton.modal.fade(role='dialog')
+								.modal-dialog
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal- 
+										.modal-body
+											form(action="/donate" id="donateForm")
+												label(class="labelCheckbox") Donate 10$
+													input(type="checkbox" name="checkboxName" value="10" id="checkbox1" class="checkboxForm")
+													span(class="styleCheckbox")
+												label(class="labelCheckbox") Donate 25$
+													input(type="checkbox" name="checkboxName" value="25" id="checkbox2" class="checkboxForm")
+													span(class="styleCheckbox")
+												label(class="labelCheckbox") Donate 50$
+													input(type="checkbox" name="checkboxName" value="50" id="checkbox3" class="checkboxForm")
+													span(class="styleCheckbox") 
+												label(class="labelCheckbox") Donate 100$
+													input(type="checkbox" name="checkboxName" value="100" id="checkbox4" class="checkboxForm")
+													span(class="styleCheckbox")
+												.modal-footer
+													button.btn.btn-default(type='button', data-dismiss='modal' id="submitDonation") Donate
+					div(class="containerMapOverview")
+						div(class="locationDiv")
+							div(class="headLocation")
+								p Location of headquarters
+							div(class="mappy" id="googleMap")
+						div(class="overview")
+							div(class="headOverview")
+								p Short story
+							div(class="overviewLeft")
+								div(class="containerText")
+									div(class="campaign" id="pitchOverview") #{selectedCampaign[i].pitch}
+							div(class="overviewRight")
+								div(class="campaignProfilePictureDiv")
+									img(class="campaignProfilePicture", src="uploads/"+selectedCampaign[i].picture)
+					div(class="containerInformation")
+						div(class="completeStory")
+							div(class="headStory")
+								p Our story
+							div(class="bodyStory")
+								div(class="containerText")
+									div(class="campaign" id="body") #{selectedCampaign[i].body}
+						div(class="moreInformation")
+							div(class="urlStory")
+								p More information
+							div(class="storyRight")
+								div(class="containerText")
+									div(class="campaign" id="url") For more information you can visit our website 
+										a(href=`${selectedCampaign[i].url}` target="_blank") #{selectedCampaign[i].url}
+								div(class="containerText")
+									div(class="campaign" id="emailCampaign") If you have any questions about this project do not hesitate to send us an email at 
+										a(href=`mailto:${selectedCampaign[i].email}`) #{selectedCampaign[i].email}
+												
+					
+					
+				
 
 		script.
 			$(document).ready(function(){
@@ -93,29 +125,6 @@ html
 					let contribution = ""
 					$('input[name="checkboxName"]:checked').each(function() {
 						let contribution = this.value
-						$("#donateForm").submit()
-						paypal.Button.render({
-									env: 'sandbox', // Or 'sandbox'
-									client: {
-									sandbox: 'ARJ5GQ-vRn8IJ41aJ55V1SVBYufYfmWyKFj0kcVA2EFv9icPs4DWAYKF-tPqwDNvong6ux_9lMYZN1ym',
-									production: 'xxxxxxxxx'
-									},
-									commit: true, // Show a 'Pay Now' button
-									payment: function(data, actions) {
-									return actions.payment.create({
-									payment: {
-									transactions: [
-									{
-									amount: { total: contribution, currency: 'USD' }
-											}]
-										}
-									});
-									},
-									onAuthorize: function(data, actions) {
-									return actions.payment.execute().then(function(payment) {
-									});
-									}
-									}, '#submitDonation');
 							$.post("/donate", {campaignName: campaignName, campaignId: campaignId, contribution: contribution}, (result) => {
 									$("#text").text("")
 									console.log("You donated" + contribution)
@@ -124,9 +133,12 @@ html
 									amountraised = parseFloat(`${result.contributionSuccess}`) + parseFloat(amountraised)
 									$("#progressText").text(`${percentageOfGoal(amountraised, goal)} raised of goal`)
 									$("#progressbar1").css("width", percentageOfGoal(amountraised, goal))
+									
+									$("#amountraised").text("This project has raised $" + amountraised +"  USD in total.") 
 										})
 									})
 								})
+								
 					
 
 					

@@ -1,63 +1,3 @@
-.containerButtons{
-	margin-top: 20px;
-	width:100%;
-	border-bottom: solid 0.2px lightgrey;
-}
-
-.navButton {
-	border: none;
-	color: black;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin-right: 5px;
-}
-
-.navButton:hover {
-	cursor: pointer;
-}
-
-.profileInfo {
-	display: block;
-}
-
-#settingsButton.selected{
-	border-bottom: solid 3px #35CA97;
-	color: #35CA97;
-	font-weight: bold;
-	outline: none;
-	box-shadow: 0px 10px 10px -6px #35CA97;
-}
-
-#profileButton.selected{
-  	border-bottom: solid 3px #35CA97;
-  	color: #35CA97;
-	font-weight: bold;
-	outline: none;
-	box-shadow: 0px 10px 10px -6px #35CA97;;
-}
-
-.profilePictureOutput {
-	max-width: 350px;
-	max-height: 350px;
-}
-
-#previewPic {
-	max-width: 100%;
-}
-
-.preview{
-	overflow: hidden;
-	width: 100px;
-	height: 100px;
-}
-
-.formElementPicture{
-	width: 50%;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -70,7 +10,9 @@ input[type=text], select, textarea{
     box-sizing: border-box;
     resize: vertical;
 }
-
+#body{
+	height: 200px;
+}
 .frontText{
 	margin-bottom: 20px;
 }
@@ -95,6 +37,7 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    float: right;
     width: 250px;
     margin-top: 20px;
 }
@@ -113,8 +56,8 @@ input[type=submit]:hover {
 	padding-left: 5px;
 }
 
-.formSettings {
-	margin-top: 20px;
+.container {
+	margin-top: 40px;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -127,20 +70,5 @@ input[type=submit]:hover {
     input[type=submit] {
         width: 50%;
         margin-top: 20px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .profilePictureOutput {
-        max-width: 200px;
-		max-height: 200px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #previewPic {
-        max-width: 200px;
-		max-height: 200px;
-		border: solid 1px #35CA97;
     }
 }

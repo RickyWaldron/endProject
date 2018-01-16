@@ -1,3 +1,4 @@
+
 .nav-tabs {
     margin-bottom: 15px;
     margin-left: 5px !important;
@@ -72,5 +73,12 @@ button.btn.btn-default.btn-sm {
     background-color: #35CA97;
 }
 
+.headText {
+    width: 100%;
+    border-bottom: solid 1px #a8a8a8;
+    color:#a8a8a8;
+    font-size: 30px;
+    font-weight: lighter;
+}
 
 

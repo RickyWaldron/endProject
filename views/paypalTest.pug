@@ -1,0 +1,62 @@
+
+for in the Js file
+	app.post("/donate", (req, res) => {
+			var create_payment_json = {
+			    "intent": "sale",
+			    "payer": {
+			        "payment_method": "paypal"
+			    },
+			    "redirect_urls": {
+			        "return_url": "http://localhost:3000",
+			        "cancel_url": "http://localhost:3000"
+			    },
+			    "transactions": [{
+			        "item_list": {
+			            "items": [{
+			                "name": "req.body.campaignName",
+			                "sku": "item",
+			                "price": "req.body.contribution",
+			                "currency": "USD",
+			                "quantity": 1
+			            }]
+			        },
+			        "amount": {
+			            "currency": "USD",
+			            "total": "1.00"
+			        },
+				        "description": "This is the payment description."
+				    }]
+				};
+				paypal.payment.create(create_payment_json, function (error, payment) {
+		   			if (error) {
+		        		throw error;
+		    		} else {
+		       			console.log("Create Payment Response");
+		        		console.log(payment);
+		    			}
+					});
+
+script.
+	paypal.Button.render({
+		env: 'sandbox', // Or 'sandbox'
+		client: {
+		sandbox: 'ARJ5GQ-vRn8IJ41aJ55V1SVBYufYfmWyKFj0kcVA2EFv9icPs4DWAYKF-tPqwDNvong6ux_9lMYZN1ym',
+		production: 'xxxxxxxxx'
+		},
+		commit: true, // Show a 'Pay Now' button
+		payment: function(data, actions) {
+		return actions.payment.create({
+		payment: {
+		transactions: [
+		{
+		amount: { total: contribution, currency: 'USD' }
+				}]
+			}
+		});
+		},
+		onAuthorize: function(data, actions) {
+		return actions.payment.execute().then(function(payment) {
+		});
+		}
+		}, '#submitDonation');
+			$("#donateForm").submit()

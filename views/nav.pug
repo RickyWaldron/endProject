@@ -25,7 +25,7 @@ html
 						li
 							a.notDrop(href='/allCampaigns') Campaigns
 						li
-							a.notDrop(href='#') Search
+							a.notDrop(href='/searchCampaigns') Search
 					ul.nav.navbar-nav.navbar-right
 							li
 								a.groupRight(href="/profile") #{firstname}
@@ -34,7 +34,7 @@ html
 								a.groupRight(href="/createCampaign") Start your campaign
 							li
 								a.groupRight(href="/logout") Logout 
-		
+			
 		if(!id)
 			nav.navbar.navbar
 				.container-fluid
@@ -55,7 +55,7 @@ html
 						li
 							a.notDrop(href='/allCampaigns') Campaigns
 						li
-							a.notDrop(href='#') Search
+							a.notDrop(href='/searchCampaigns') Search
 					ul.nav.navbar-nav.navbar-right
 						li
 							a.btn.btn-primary(data-toggle='modal', data-target='#myModal')| Login/Signup
@@ -113,7 +113,6 @@ html
 														button.btn.btn-default.btn-sm(type='button', data-dismiss ='modal', aria-hidden='true')| Cancel
 														h5(id="text1" style="color: red")
 
-
 		script.
 			$(document).ready(function(){
 				$(".loginClass").submit(function(event) {
@@ -162,8 +161,8 @@ html
 							$("#text1").text(`${result.existingUser} is already taken`)
 							}
 							else {
-								console.log(id)
-								window.location.reload()
+								console.log(result.id)
+								$("#text1").text(`You are now able to login!`)
 								}
 							})
 						}
