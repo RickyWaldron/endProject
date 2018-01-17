@@ -10,23 +10,39 @@ html
 		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
 		link(rel='stylesheet', type='text/css', href='css/index.css')
+		link(rel='stylesheet', type='text/css', href='css/allCampaigns.css')
 
 	body
 		include nav.pug
-		FORM(id="searchCampaignForm", class="searchCampaign", action="/searchCampaigns")
-			input(type="text" id="searchedCampaignId" class="searchInputCampaign" name="searchCampaign")
-			input(class="submitSearch", type="submit", name="search")
-		div.containerFoundCampaing
-			
+		div.containerSearchform
+			p(class="headSearch") Search through campaigns by name
+			FORM(id="searchCampaignForm", class="searchCampaign", action="/searchCampaigns")
+				input(type="text" id="searchedCampaignId" class="searchInputCampaign" name="searchCampaign")
+				input(class="submitSearch", type="submit", name="search")
+		div(id= "container")
+				
 
 		script.
 			$(document).ready(function() {
 				$(".submitSearch").click(function(e) {
+				$("#container").empty()
 				e.preventDefault()
 				let searchedCampaign = $('#searchedCampaignId').val()
 					console.log(searchedCampaign)
 					$.post("/searchCampaigns", {searchedCampaign: searchedCampaign},  (result) => {
-						console.log(`${result.title}`)
+						for (var i = 0; i<result.length;i++){
+								$('#container').append(
+									`<div class = "containerCampaign">
+										<a href=/oneCampaign?id=${result[i].campaign_id}>
+										<div class="campaign">
+										<img class="campaignPicture" src=uploads/${result[i].picture}>
+										</div>
+										<div class = "containerText">
+										<div class="campaign" id="title">${result[i].title}</div>
+									<div class="campaign" id="pitch">${result[i].pitch}</div>
+										<div class="campaign" id="goal">${result[i].goal}</div></div>`
+								)
+							}
+						})
 					})
 				})
-			})

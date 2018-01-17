@@ -55,8 +55,8 @@
 		}
 	}
 	@media all and (max-width: 680px) {
-	.vid-info{
-		 margin-top: 300px;
+	.vid-info, #arrow-right{
+		 margin-top: 200px;
 
 		}
 	}
