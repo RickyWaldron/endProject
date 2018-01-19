@@ -20,7 +20,6 @@ module.exports = (app, client) => {
 		}
 		client.query(query, (error, result) => {
 			let contributionSuccess = contribution
-			console.log(result.rows[0].goal)
 			let goal = result.rows[0].goal
 			res.send({ contributionSuccess: contributionSuccess })
 		})

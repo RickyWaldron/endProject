@@ -12,31 +12,32 @@ module.exports = (app, client) => {
         const query = {
             text: (`SELECT * FROM users WHERE email='${email}'`)
         }
-        client.query(query, (error, result) => {
-            if (error) throw error
-            let ajax = req.body.ajax
-            if (result.rows.length == 1) {
 
-                let existingUser = result.rows[0].email
-                ajax = false
-                res.send({ existingUser, ajax })
-            } else {
-                bcrypt.genSalt(10, function(error, result) {
-                    bcrypt.hash(password, result, function(err, hash) {
-                        const query2 = {
-                            text: (`INSERT INTO users (firstname, lastname, email, password) VALUES ('${firstname}', '${lastname}', '${email}', '${hash}') RETURNING *`)
-                        }
-                        client.query(query2, (error, result) => {
-                            if (error) throw error
-                            console.log(result.rows[0].user_id)
-                            req.session.user_id = result.rows[0].user_id
-                            id = req.session.user_id
-                            firstname = result.rows[0].firstname
-                            res.send({ id, firstname })
-                        })
-                    })
-                })
+        bcrypt.hash(password, 10, function(err, hash) {
+            const query2 = {
+                text: (`INSERT INTO users (firstname, lastname, email, password)
+                	 VALUES ('${firstname}', '${lastname}', '${email}', '${hash}') RETURNING *`)
             }
-        })
-    })
-}
+            client.query(query, (error, result)=>{
+            	if (error) throw error
+		            let ajax = req.body.ajax
+		            if (result.rows.length == 1) {
+		                let existingUser = result.rows[0].email
+		                ajax = false
+		                res.send({ existingUser, ajax })
+		            }
+		            else {
+		            	client.query(query2, (error, result2) => {
+                            if (error) throw error
+                            req.session.user_id = result2.rows[0].user_id
+                            id = req.session.user_id
+                            firstname = result2.rows[0].firstname
+                            res.send({ id, firstname })
+            			})
+            		}
+           		})
+            })
+		})
+	}		     
+
+ 

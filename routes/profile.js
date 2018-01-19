@@ -7,7 +7,7 @@ var NodeGeocoder = require('node-geocoder');
 var options = {
 	provider: 'google',
 	httpAdapter: 'https',
-	apiKey: 'process.env.apikey',
+	apikey: 'process.env.apikey',
 	formatter: null
 };
 var geocoder = NodeGeocoder(options);
@@ -48,7 +48,8 @@ module.exports = (app, client) => {
 		let streetAddress = req.body.streetAddress
 		let homenumber = req.body.homeNumber
 		let city = req.body.city
-		console.log("the id" + id + "first" + firstname + "last" + lastname + "email" + email + "age" + age)
+		
+		
 		geocoder.geocode(streetAddress + homenumber + city)
 			.then(function(result) {
 				latitude = result[0].latitude

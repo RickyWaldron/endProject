@@ -14,26 +14,27 @@ html
 		link(rel='stylesheet', type='text/css', href='css/allCampaigns.css')
 	body
 		include nav.pug
+		if(selectedCampaigns)
 			div.wrap
 				div.video-background
 					div.video-foreground(id="videoDiv0")
-						iframe(id="video0" src=selectedCampaigns[1].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
-					#vidtop-content
-						.vid-info
-							h2 #{selectedCampaigns[1].title}
-							p #{selectedCampaigns[1].pitch}
-					div.video-foreground(id="videoDiv1")
-						iframe(id="video1" src=selectedCampaigns[4].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
-					#vidtop-content
-						.vid-info
-							h2 #{selectedCampaigns[4].title}
-							p #{selectedCampaigns[4].pitch}
-					div.video-foreground(id="videoDiv2")
-						iframe(id="video2" src=selectedCampaigns[0].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+						iframe(id="video0" src=selectedCampaigns[0].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
 					#vidtop-content
 						.vid-info
 							h2 #{selectedCampaigns[0].title}
 							p #{selectedCampaigns[0].pitch}
+					div.video-foreground(id="videoDiv1")
+						iframe(id="video1" src=selectedCampaigns[1].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[1].title}
+							p #{selectedCampaigns[1].pitch}
+					div.video-foreground(id="videoDiv2")
+						iframe(id="video2" src=selectedCampaigns[2].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[2].title}
+							p #{selectedCampaigns[2].pitch}
 				div#arrow-right.arrow
 			div.container
 				p.headText Popular Campaigns

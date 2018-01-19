@@ -35,22 +35,21 @@ module.exports = (app, client) => {
         let homeNumber = req.body.homeNumber
         let websiteUrl = req.body.url
         let campaignPicture = req.file.filename
-        console.log(req.file.filename)
         geocoder.geocode(streetAddress + homeNumber + city)
             .then(function(result) {
                 latitude = result[0].latitude
                 longitude = result[0].longitude
                 const query = {
-                    text: (`INSERT INTO campaigns (user_id, title, body, email, goal, url,
-						video, streetaddress, homenumber, city, latitude, longitude, picture, pitch) 
-						VALUES ('${id}', '${title}', '${body}', '${email}', '${goal}',
-						'${websiteUrl}', '${video}', '${streetAddress}', '${homeNumber}', 
-						'${city}', '${latitude}', '${longitude}', '${campaignPicture}', '${pitch}') RETURNING *`)
+                    text: (`INSERT INTO campaigns (user_id, title, body, goal, url, email,
+						video, streetaddress, homenumber, city, latitude, longitude, pitch, picture) 
+						VALUES ('${id}', '${title}', '${body}', '${goal}',
+						'${websiteUrl}', '${email}', '${video}', '${streetAddress}', '${homeNumber}', 
+						'${city}', '${latitude}', '${longitude}', '${pitch}', '${campaignPicture}') RETURNING *`)
                 }
-                client.query(query, (error, result2) => {
-                    if (error) throw error
-                    res.redirect("/allCampaigns")
-                })
-            })
-    })
-}
+            			client.query(query, (error, result) => {
+		            		if (error) throw error
+		            			res.redirect("/allCampaigns")
+                		})
+            		})
+    		})
+}	

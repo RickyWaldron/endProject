@@ -27,7 +27,6 @@ module.exports = (app, client) => {
 								picture = result.rows[0].picture
 								req.session.user_id = result.rows[0].user_id
 								let id = req.session.user_id
-								console.log("login id " + id)
 								res.send({ ajax, id, passval, picture, firstname })
 							}
 						})

@@ -17,6 +17,11 @@
     color: #35CA97;
 }
 
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}    
+
 a.groupRight {
     color: #35CA97;
     height: 50px;
@@ -28,14 +33,25 @@ a.btn.btn-primary {
     max-width: 125px;
     border-radius: 0px;
     border: none;
+
 }
 
+.btn-sm, .btn-group-sm>.btn{
+    margin-left: 15px;
+}
 a.dropdown-toggle {
     color: #35CA97;
 }
+.modal-title{
+    margin-left: 5px;
+}
 
+.close{
+    margin-right: 5px;
+}
 nav.menu1 {
     border-bottom: solid 0.05em #35CA97;
+    margin-bottom: 15px;
 }
 
 nav.navbar.navbar {
@@ -73,6 +89,12 @@ button.btn.btn-default.btn-sm {
 .logoutButton:hover {
     color: white;
     background-color: #35CA97;
+}
+
+@media all and (max-width: 480px) {
+    .modal-content {
+        width: 90%;
+    }
 }
 
 .headText {
