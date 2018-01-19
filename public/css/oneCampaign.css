@@ -1,212 +1,233 @@
-#googleMap{
-	border: solid 1px black;
-	width: 80%;
-	height: 60%;
-	margin-top: 10px;
+#googleMap {
+    border: solid 1px black;
+    width: 80%;
+    height: 60%;
+    margin-top: 10px;
 }
 
-.locationDiv{
-	width: 45%;
-	display: inline-block;
+.locationDiv {
+    width: 45%;
+    display: inline-block;
 }
 
-.overview{
-	width: 50%;
-	height: 500px;
-	display: inline-block;
-	position: absolute;
-	color: #a8a8a8;
+.overview {
+    width: 50%;
+    height: 500px;
+    display: inline-block;
+    position: absolute;
+    color: #a8a8a8;
 }
 
-.overviewRight{
-	display: inline-block;
-	width: 55%;
-	margin-top: 15px;
-}
-.overviewLeft{
-	display: inline-block;
-	width: 45%;
-	padding-left: 10px;
+.overviewRight {
+    display: inline-block;
+    width: 55%;
+    margin-top: 15px;
 }
 
-.headOverview{
-	font-size: 24px;
-	border-bottom: solid 1px #a8a8a8;
-	font-weight: lighter;
+.overviewLeft {
+    display: inline-block;
+    width: 45%;
+    padding-left: 10px;
 }
 
-.headLocation{
-	width: 90%;
-	border-bottom: solid 1px #a8a8a8;
-	color:#a8a8a8;
-	font-size: 24px;
-	font-weight: lighter;
+.headOverview {
+    font-size: 24px;
+    border-bottom: solid 1px #a8a8a8;
+    font-weight: lighter;
 }
 
-.containerInformation{
-	margin-top: 20px;
-	margin-bottom: 150px; 
-}
-.completeStory{
-	width: 65%;
-	overflow: hidden;
-	display: inline-block;
+.headLocation {
+    width: 90%;
+    border-bottom: solid 1px #a8a8a8;
+    color: #a8a8a8;
+    font-size: 24px;
+    font-weight: lighter;
 }
 
-.containerMapOverview{
-	margin-top: 20px;
+.containerInformation {
+    margin-top: 20px;
+    margin-bottom: 150px;
 }
-.moreInformation{
-	position: absolute;
-	width: 30%;
-	display: inline-block;
-}
-.headStory{
-	width: 90%;
-	border-bottom: solid 1px #a8a8a8;
-	color:#a8a8a8;
-	font-size: 24px;
-	font-weight: lighter;
-}
-.campaignProfilePicture{
-	width: 90%;
-	height: 80%;
 
+.completeStory {
+    width: 65%;
+    overflow: hidden;
+    display: inline-block;
 }
-.urlStory{
-	width: 90%;
-	border-bottom: solid 1px #a8a8a8;
-	color:#a8a8a8;
-	font-size: 24px;
-	font-weight: lighter;
+
+.containerMapOverview {
+    margin-top: 20px;
+}
+
+.moreInformation {
+    position: absolute;
+    width: 30%;
+    display: inline-block;
+}
+
+.headStory {
+    width: 90%;
+    border-bottom: solid 1px #a8a8a8;
+    color: #a8a8a8;
+    font-size: 24px;
+    font-weight: lighter;
+}
+
+.campaignProfilePicture {
+    width: 90%;
+    height: 80%;
+}
+
+.urlStory {
+    width: 90%;
+    border-bottom: solid 1px #a8a8a8;
+    color: #a8a8a8;
+    font-size: 24px;
+    font-weight: lighter;
 }
 
 
 #pitchOverview {
-	font-size: 16px;
-	color: black;
-	font-weight: normal;
+    font-size: 16px;
+    color: black;
+    font-weight: normal;
 }
 
-.oneCampaign{
-	width: 100%;
-	margin-top: 50px;
+.oneCampaign {
+    width: 100%;
+    margin-top: 50px;
 }
 
-#goal{
-	font-size: 20px;
+#goal {
+    font-size: 20px;
 }
 
-#amountraised{
-	font-size: 16px;
+#amountraised {
+    font-size: 16px;
 }
 
-#donateNow{
-	margin-top: 20px;
-	width: 50%;
-	background-color: #35CA97;
+#donateNow {
+    margin-top: 20px;
+    width: 50%;
+    background-color: #35CA97;
 }
+
 .oneCampaignLeft {
-	width: 65%;
-	display: inline-block;
-}
-.containerText{
-	padding-top: 15px;
+    width: 65%;
+    display: inline-block;
 }
 
-#nowFunding{
-	border-bottom: solid 1px #a8a8a8;
-	color: #a8a8a8;
-	font-weight: lighter;
-	font-size: 18px;
+.containerText {
+    padding-top: 15px;
+}
+
+#nowFunding,
+{
+    border-bottom: solid 1px #a8a8a8;
+    color: #a8a8a8;
+    font-weight: lighter;
+    font-size: 18px;
 }
 
 .oneCampaignRight {
-	margin-top: 25px;
-	margin-left: 20px;
-	width: 30%;
-	display: inline-block;
-	padding-left: 10px;
-	position: absolute;
-}	
+    margin-top: 25px;
+    margin-left: 20px;
+    width: 30%;
+    display: inline-block;
+    padding-left: 10px;
+    position: absolute;
+}
 
-.youtubeVideo{
-	margin-top: 10px;
-	width: 100%;
-	height: 80%;
+.youtubeVideo {
+    margin-top: 10px;
+    width: 100%;
+    height: 80%;
 }
 
 @media screen and (max-width: 480px) {
-	#googleMap{
-		min-width: 100%;
-		max-height: 100%;
-	}
+    #googleMap {
+        min-width: 100%;
+        max-height: 100%;
+    }
 }
 
 @media screen and (max-width: 600px) {
-	.oneCampaignRight, .oneCampaignLeft, .overview, .locationDiv, .moreInformation, .completeStory {
-		width: 100%;
-		position: relative;
-		margin-top: 10px;
-	}
+    .oneCampaignRight,
+    .oneCampaignLeft,
+    .overview,
+    .locationDiv,
+    .moreInformation,
+    .completeStory {
+        width: 100%;
+        position: relative;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #nowFunding,
+    .urlStory,
+    .headStory,
+    .headOverview {
+        width: 90%;
+        border-bottom: solid 1px #a8a8a8;
+        color: #a8a8a8;
+        font-size: 24px;
+        font-weight: lighter;
+    }
 }
 
 .labelCheckbox {
-	border: 1px solid #ccc;
-	padding:10px;
-	width: 125px;
-	margin:0 5px 10px;
-	display: inline-block; 
-	position: relative;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 125px;
+    margin: 0 5px 10px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .labelCheckbox:hover {
- background:#eee;
- cursor:pointer;
+    background: #eee;
+    cursor: pointer;
 }
 
 .labelCheckbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .styleCheckbox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}  
-
-
-.labelCheckbox input:checked ~ .styleCheckbox {
-	box-shadow: 0px 0px 6px 6px #35CA97;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
-#progressbar1{
-	height: 100%;
-	background-color: #44b77e;
+
+.labelCheckbox input:checked~.styleCheckbox {
+    box-shadow: 0px 0px 6px 6px #35CA97;
 }
 
-#containerProgressbar{
-	margin-top: 20px;
-	width: 80%;
-	height: 40px;
-	background-color: #b1e6d4; 
+#progressbar1 {
+    height: 100%;
+    background-color: #44b77e;
+}
+
+#containerProgressbar {
+    margin-top: 20px;
+    width: 80%;
+    height: 40px;
+    background-color: #b1e6d4;
 }
 
 #containerProgressbar:hover {
-	box-shadow: 0px 0px 5px 2px #35CA97;
-	transition: all 300ms linear;
+    box-shadow: 0px 0px 5px 2px #35CA97;
+    transition: all 300ms linear;
 }
-
-
-
-
-

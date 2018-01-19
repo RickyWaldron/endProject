@@ -8,7 +8,7 @@ module.exports = (app, client) => {
 		}
 		client.query(query, (error, result) => {
 			let allCampaigns = result
-			res.render("allCampaigns", {allCampaigns: allCampaigns, id:id})
+			res.render("allCampaigns", { allCampaigns: allCampaigns, id: id })
 		})
 	})
 	app.get("/oneCampaign", function(req, res) {
@@ -19,7 +19,7 @@ module.exports = (app, client) => {
 		}
 		client.query(query, (error, result) => {
 			let selectedCampaign = result.rows
-			res.render("oneCampaign", {selectedCampaign: selectedCampaign, id: id})
+			res.render("oneCampaign", { selectedCampaign: selectedCampaign, id: id })
 		})
 	})
 }

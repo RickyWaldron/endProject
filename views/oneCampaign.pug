@@ -139,11 +139,8 @@ html
 									})
 								})
 								
-					
-
-					
+					 
 				jQuery(function($) {
-					// Asynchronously Load the map API 
 					var script = document.createElement('script');
 					script.src = "//maps.googleapis.com/maps/api/js?key=#{process.env.apikey}&callback=initialize";
 					document.body.appendChild(script);
@@ -156,7 +153,6 @@ html
 						mapTypeId: 'roadmap'
 					};
 									
-					// Display a map on the page
 					map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
 					map.setTilt(45);
 
@@ -167,12 +163,10 @@ html
 					for (var j = 0; j < data.length; j++) {
 					markers.push([data[0].title, data[0].latitude, data[0].longitude])
 						infoWindowContent.push([data[0].title])
-					}
-						
-					// Display multiple markers on a map
-					var infoWindow = new google.maps.InfoWindow(), marker, i;
+					}		
 					
-					// Loop through our array of markers & place each one on the map  
+					var infoWindow = new google.maps.InfoWindow(), marker, i;
+					 
 					for( i = 0; i < markers.length; i++ ) {
 						var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
 						bounds.extend(position);
@@ -182,7 +176,7 @@ html
 							title: markers[i][0]
 						});
 						
-						// Allow each marker to have an info window    
+						
 						google.maps.event.addListener(marker, 'click', (function(marker, i) {
 							return function() {
 								infoWindow.setContent(infoWindowContent[i][0]);
@@ -190,11 +184,9 @@ html
 							}
 						})(marker, i));
 
-						// Automatically center the map fitting all markers on the screen
 						map.fitBounds(bounds);
 					}
 
-					// Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
 					var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
 						this.setZoom(8);
 						google.maps.event.removeListener(boundsListener);

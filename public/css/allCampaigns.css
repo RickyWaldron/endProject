@@ -1,22 +1,24 @@
 .container {
-	margin: 5%;
+    margin: 5%;
 }
-.containerCampaign{
-	width: 275px;
-	height: 550px;
-	border: solid 1.5px #dddddd;
-	border-radius: 2px;
-	cursor: pointer;
-	position: relative;
-	display: inline-block;
-	margin: 2% 4.5%;
+
+.containerCampaign {
+    width: 275px;
+    height: 550px;
+    border: solid 1.5px #dddddd;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin: 2% 4.5%;
 }
 
 .containerSearchform {
-		width: 100%;
-		margin-top: 20px;
+    width: 100%;
+    margin-top: 20px;
 }
-.searchInputCampaign{
+
+.searchInputCampaign {
     width: 40%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -27,16 +29,17 @@
     margin: 20 auto;
 }
 
-.searchCampaignForm{
-	width: 50%;
-	margin: 0 auto;
+.searchCampaignForm {
+    width: 50%;
+    margin: 0 auto;
 }
+
 .headSearch {
-	margin: 0 auto;
-	text-align: center;
+    margin: 0 auto;
+    text-align: center;
     width: 50%;
     border-bottom: solid 1px #a8a8a8;
-    color:#a8a8a8;
+    color: #a8a8a8;
     font-size: 30px;
     font-weight: lighter;
 }
@@ -56,38 +59,39 @@
     display: block;
     margin: 20 auto;
 }
+
 .campaignPicture {
-	height: 50%;
-	width: 100%;
+    height: 50%;
+    width: 100%;
 }
- 
-#title{
-	font-weight: bold;
-	font-size: 12pt;
-	padding-left: 3px;
-	color: #35CA97;
+
+#title {
+    font-weight: bold;
+    font-size: 12pt;
+    padding-left: 3px;
+    color: #35CA97;
 }
 
 @media screen and (max-width: 480px) {
-    .campaignPicture{
+    .campaignPicture {
         min-width: 200px;
-		max-height: 300px;
+        max-height: 300px;
     }
 }
 
 
 .containerCampaign:hover {
-	box-shadow: 0px 0px 5px 2px #35CA97;
-	border: solid 2px #35CA97;
-	transition: all 300ms linear;
+    box-shadow: 0px 0px 5px 2px #35CA97;
+    border: solid 2px #35CA97;
+    transition: all 300ms linear;
 }
 
 .containerText {
-	margin-left: 5%;
-	margin-right: 5%;
-	width: 90%;
-	position: absolute;
-	bottom: 0;
-	height: 48%;
-	border-top: solid 1px #dddddd;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    height: 48%;
+    border-top: solid 1px #dddddd;
 }

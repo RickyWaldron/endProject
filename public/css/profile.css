@@ -1,68 +1,71 @@
-.containerButtons{
-	margin-top: 20px;
-	width:100%;
-	border-bottom: solid 0.2px lightgrey;
+.containerButtons {
+    margin-top: 20px;
+    width: 100%;
+    border-bottom: solid 0.2px lightgrey;
 }
 
 .navButton {
-	border: none;
-	color: black;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin-right: 5px;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5px;
 }
 
 .navButton:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .profileInfo {
-	display: block;
+    display: block;
 }
 
-#settingsButton.selected{
-	border-bottom: solid 3px #35CA97;
-	color: #35CA97;
-	font-weight: bold;
-	outline: none;
-	box-shadow: 0px 10px 10px -6px #35CA97;
+#settingsButton.selected {
+    border-bottom: solid 3px #35CA97;
+    color: #35CA97;
+    font-weight: bold;
+    outline: none;
+    box-shadow: 0px 10px 10px -6px #35CA97;
 }
 
-#profileButton.selected{
-  	border-bottom: solid 3px #35CA97;
-  	color: #35CA97;
-	font-weight: bold;
-	outline: none;
-	box-shadow: 0px 10px 10px -6px #35CA97;;
+#profileButton.selected {
+    border-bottom: solid 3px #35CA97;
+    color: #35CA97;
+    font-weight: bold;
+    outline: none;
+    box-shadow: 0px 10px 10px -6px #35CA97;
+    ;
 }
 
 .profilePictureOutput {
-	max-width: 350px;
-	max-height: 350px;
+    max-width: 350px;
+    max-height: 350px;
 }
 
 #previewPic {
-	max-width: 100%;
+    max-width: 100%;
 }
 
-.preview{
-	overflow: hidden;
-	width: 100px;
-	height: 100px;
+.preview {
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
 }
 
-.formElementPicture{
-	width: 50%;
+.formElementPicture {
+    width: 50%;
 }
 
 * {
     box-sizing: border-box;
 }
 
-input[type=text], select, textarea{
+input[type=text],
+select,
+textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -71,10 +74,13 @@ input[type=text], select, textarea{
     resize: vertical;
 }
 
-.frontText{
-	margin-bottom: 20px;
+.frontText {
+    margin-bottom: 20px;
 }
-input[type=url], select, textarea{
+
+input[type=url],
+select,
+textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -103,18 +109,18 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-#homeNumber{
-	margin-top: 5px;
-	margin-bottom: 5px;
+#homeNumber {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.title{
-	margin-top: 10px;
-	padding-left: 5px;
+.title {
+    margin-top: 10px;
+    padding-left: 5px;
 }
 
 .formSettings {
-	margin-top: 20px;
+    margin-top: 20px;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
@@ -122,7 +128,9 @@ input[type=submit]:hover {
 
 
 
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
 @media (max-width: 600px) {
     input[type=submit] {
         width: 50%;
@@ -133,14 +141,14 @@ input[type=submit]:hover {
 @media screen and (max-width: 480px) {
     .profilePictureOutput {
         max-width: 200px;
-		max-height: 200px;
+        max-height: 200px;
     }
 }
 
 @media screen and (max-width: 480px) {
     #previewPic {
         max-width: 200px;
-		max-height: 200px;
-		border: solid 1px #35CA97;
+        max-height: 200px;
+        border: solid 1px #35CA97;
     }
 }

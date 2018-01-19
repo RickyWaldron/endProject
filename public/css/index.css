@@ -1,4 +1,3 @@
-
 .nav-tabs {
     margin-bottom: 15px;
     margin-left: 5px !important;
@@ -11,7 +10,7 @@
     color: #35CA97;
 }
 
-.modal-content{
+.modal-content {
     width: 50%;
     margin: 0 auto;
     min-height: 40%;
@@ -20,7 +19,7 @@
 
 a.groupRight {
     color: #35CA97;
-    height: 50px;   
+    height: 50px;
 }
 
 a.btn.btn-primary {
@@ -34,13 +33,15 @@ a.btn.btn-primary {
 a.dropdown-toggle {
     color: #35CA97;
 }
+
 nav.menu1 {
     border-bottom: solid 0.05em #35CA97;
 }
 
-nav.navbar.navbar{
+nav.navbar.navbar {
     border-bottom: solid 0.05em #35CA97;
 }
+
 a.notDrop {
     color: #35CA97;
 }
@@ -52,6 +53,7 @@ a.navbar-brand {
 input.btn.btn-primary.btn-sm {
     background-color: #35CA97;
 }
+
 button.btn.btn-primary.btn-sm {
     background-color: #35CA97;
 }
@@ -60,7 +62,7 @@ button.btn.btn-default.btn-sm {
     background-color: #35CA97;
 }
 
-.logoutButton{
+.logoutButton {
     background-color: white;
     color: green;
     border: solid 1px #35CA97;
@@ -76,9 +78,7 @@ button.btn.btn-default.btn-sm {
 .headText {
     width: 100%;
     border-bottom: solid 1px #a8a8a8;
-    color:#a8a8a8;
+    color: #a8a8a8;
     font-size: 30px;
     font-weight: lighter;
 }
-
-

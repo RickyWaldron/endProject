@@ -16,24 +16,24 @@ html
 		include nav.pug
 			div.wrap
 				div.video-background
-					div.video-foreground
-						iframe(id="video1" src=selectedCampaigns[0].video+"?t=0&controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
-					#vidtop-content
-						.vid-info
-							h2 #{selectedCampaigns[0].title}
-							p #{selectedCampaigns[0].pitch}
-					div.video-foreground
-						iframe(id="video2" src=selectedCampaigns[4].video+"?t=0&controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
-					#vidtop-content
-						.vid-info
-							h2 #{selectedCampaigns[4].title}
-							p #{selectedCampaigns[4].pitch}
-					div.video-foreground
-						iframe(id="video3" src=selectedCampaigns[1].video+"?t=0&controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					div.video-foreground(id="videoDiv0")
+						iframe(id="video0" src=selectedCampaigns[1].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
 					#vidtop-content
 						.vid-info
 							h2 #{selectedCampaigns[1].title}
 							p #{selectedCampaigns[1].pitch}
+					div.video-foreground(id="videoDiv1")
+						iframe(id="video1" src=selectedCampaigns[4].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[4].title}
+							p #{selectedCampaigns[4].pitch}
+					div.video-foreground(id="videoDiv2")
+						iframe(id="video2" src=selectedCampaigns[0].video+"?t=0&controls=0&showinfo=0&rel=0&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen)
+					#vidtop-content
+						.vid-info
+							h2 #{selectedCampaigns[0].title}
+							p #{selectedCampaigns[0].pitch}
 				div#arrow-right.arrow
 			div.container
 				p.headText Popular Campaigns
@@ -51,11 +51,16 @@ html
 
 		script.
 			$(document).ready(function(){
+					var currentVideo = 0;
+					var playFirstVideo = $('#video' + currentVideo).prop('src');
+						playFirstVideo += "&autoplay=1";
+						$('#video' + currentVideo).prop('src',playFirstVideo);
+
 				let sliderImages = document.querySelectorAll(".video-foreground"),
 					videoInfo = document.querySelectorAll("#vidtop-content"),
-					
 					arrowRight = document.querySelector("#arrow-right"),
 					current = 0;
+					
 
 
 					// Clear all images
@@ -83,11 +88,28 @@ html
 						current++;
 					}
 
-
 					// Right arrow click
 					arrowRight.addEventListener("click", function() {
+						
+						var videoURL = $('#video' + currentVideo).prop('src');
+						videoURL = videoURL.replace("&autoplay=1", "");
+						$('#video' + currentVideo).prop('src','');
+						$('#video' + currentVideo).prop('src',videoURL);
+
+						currentVideo = currentVideo + 1
+						
+						var videoURL = $('#video' + currentVideo).prop('src');
+						videoURL += "&autoplay=1";
+						$('#video' + currentVideo).prop('src',videoURL);
+
+						if (currentVideo == 2){
+							$("#arrow-right").hide()
+
+						}
+						
 						if (current === sliderImages.length - 1) {
 							current = -1;
+
 						}
 						
 						slideRight();
