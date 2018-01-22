@@ -96,12 +96,6 @@ app.get('/', (req, res) => {
 			})
 	})	
 
-
-
-app.get('/paypalTest', (req, res)=>{
-	res.render('paypalTest')
-})
-
 app.listen(port, () => {
     console.log("listening")
 })
