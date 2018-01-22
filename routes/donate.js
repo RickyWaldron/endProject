@@ -1,12 +1,5 @@
 require('dotenv').load();
 
-var paypal = require('paypal-rest-sdk');
-paypal.configure({
-	'mode': 'sandbox',
-	'client_id': 'process.env.paypalid',
-	'client_secret': 'process.env.paypalsecret'
-});
-
 module.exports = (app, client) => {
 	app.get("/donate", (req, res) => {
 		res.render("oneCampaign")

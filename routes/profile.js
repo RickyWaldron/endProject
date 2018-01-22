@@ -1,7 +1,6 @@
 require('dotenv').load();
 const multer = require('multer')
 var upload = multer({ dest: 'public/uploads/' })
-var Cropper = require('cropperjs')
 var NodeGeocoder = require('node-geocoder');
 
 var options = {
