@@ -1,0 +1,5 @@
+node_modules
+.env
+cropper.pug
+views/paypalTest.pug
+views/cropper.pug
