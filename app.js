@@ -14,8 +14,6 @@ const queryParser = require('query-parser')
 
 const bcrypt = require('bcrypt')
 
-var Jquery = require('jquery')
-
 var port = process.env.port
 
 app.use(session({
